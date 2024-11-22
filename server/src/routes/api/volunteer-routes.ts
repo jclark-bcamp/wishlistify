@@ -1,6 +1,6 @@
 import express from 'express';
 import type { Request, Response } from 'express';
-import { Volunteer } from '../../models/volunteer.js';
+import { Volunteer } from '../../models/user.js';
 
 const router = express.Router();
 
