@@ -1,6 +1,6 @@
 import sequelize from '../config/connection';
 import { seedUsers } from './users';
-import { seedWishlists } from './wishlists.ts';
+// import { seedWishlists } from './items';
 
 const seedAll = async () => {
     try {
@@ -10,7 +10,7 @@ const seedAll = async () => {
         await seedUsers();
         console.log('\n----- USERS SEEDED -----\n');
 
-        await seedWishlists();
+        // await seedWishlists();
         console.log('\n----- WISHLISTS SEEDED -----\n');
 
         process.exit(0);
