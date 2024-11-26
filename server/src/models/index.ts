@@ -1,13 +1,13 @@
-// import sequelize from '../config/connection.js';
+import sequelize from '../config/connection.js';
 import { UserFactory } from './user.js';
-// import { PostFactory } from './post.js';
+import { GiftFactory } from './gift.js';
 
 const User = UserFactory(sequelize);
-const Post = PostFactory(sequelize);
+const Gift = GiftFactory(sequelize);
 
-User.hasMany(Post, {
-    foreignKey: 'user_id',
+User.hasMany(Gift, {
+    foreignKey: 'userId',
     onDelete: 'CASCADE',
 });
 
-export { User, Post };
+export { User, Gift };

@@ -1,14 +1,14 @@
 import express from 'express';
 import type { Request, Response } from 'express';
-import { Volunteer } from '../../models/user.js';
+import { Gift } from '../../models/gift.js';
 
 const router = express.Router();
 
-// GET /volunteers - Get all volunteers
+// GET /gifts - Get all gifts
 router.get('/', async (_req: Request, res: Response) => {
   try {
-    const volunteers = await Volunteer.findAll();
-    res.json(volunteers);
+    const gift = await Gift.findAll();
+    res.json(gift);
   } catch (error: any) {
     res.status(500).json({
       message: error.message
@@ -16,16 +16,16 @@ router.get('/', async (_req: Request, res: Response) => {
   }
 });
 
-// GET /volunteers/:id - Get a volunteer by ID
+// GET /gifts/:id - Get gift by ID
 router.get('/:id', async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const volunteer = await Volunteer.findByPk(id);
-    if(volunteer) {
-      res.json(volunteer);
+    const gift = await Gift.findByPk(id);
+    if(gift) {
+      res.json(gift);
     } else {
       res.status(404).json({
-        message: 'Volunteer not found'
+        message: 'Gift not found'
       });
     }
   } catch (error: any) {
@@ -35,14 +35,16 @@ router.get('/:id', async (req: Request, res: Response) => {
   }
 });
 
-// POST /volunteers - Create a new volunteer
+// POST /gifts - Create a new gift
 router.post('/', async (req: Request, res: Response) => {
-  const { volunteerName } = req.body;
+  const { giftName, giftPrice, userId } = req.body;
   try {
-    const newVolunteer = await Volunteer.create({
-      volunteerName
+    const newgift = await Gift.create({
+      giftName,
+      giftPrice,
+      userId
     });
-    res.status(201).json(newVolunteer);
+    res.status(201).json(newgift);
   } catch (error: any) {
     res.status(400).json({
       message: error.message
@@ -50,19 +52,19 @@ router.post('/', async (req: Request, res: Response) => {
   }
 });
 
-// PUT /volunteers/:id - Update a volunteer by ID
+// PUT /gifts/:id - Update a gift by ID
 router.put('/:id', async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { volunteerName } = req.body;
+  const { giftName } = req.body;
   try {
-    const volunteer = await Volunteer.findByPk(id);
-    if(volunteer) {
-      volunteer.volunteerName = volunteerName;
-      await volunteer.save();
-      res.json(volunteer);
+    const gift = await Gift.findByPk(id);
+    if(gift) {
+      gift.giftName = giftName;
+      await gift.save();
+      res.json(gift);
     } else {
       res.status(404).json({
-        message: 'Volunteer not found'
+        message: 'gift not found'
       });
     }
   } catch (error: any) {
@@ -72,13 +74,13 @@ router.put('/:id', async (req: Request, res: Response) => {
   }
 });
 
-// DELETE /volunteers/:id - Delete a volunteer by ID
+// DELETE /gifts/:id - Delete a gift by ID
 router.delete('/:id', async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const volunteer = await Volunteer.findByPk(id);
-    if(volunteer) {
-      await volunteer.destroy();
+    const gift = await Gift.findByPk(id);
+    if(gift) {
+      await gift.destroy();
       res.json({ message: 'User deleted' });
     } else {
       res.status(404).json({
@@ -92,4 +94,4 @@ router.delete('/:id', async (req: Request, res: Response) => {
   }
 });
 
-export { router as volunteerRouter };
+export { router as giftRouter };
