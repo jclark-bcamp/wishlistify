@@ -9,13 +9,6 @@ interface GiftAttributes {
     userId: number;
 }
 
-// interface UserAttributes {
-//   id: number;
-//   email: string;
-//   userName: string;
-//   userPassword: string;
-// }
-
 interface GiftCreationAttributes extends Optional<GiftAttributes, 'id'> { }
 
 export class Gift extends Model<GiftAttributes, GiftCreationAttributes> implements GiftAttributes {
@@ -41,7 +34,7 @@ export function GiftFactory(sequelize: Sequelize): typeof Gift {
                 allowNull: false,
             },
             giftPrice: {
-                type: DataTypes.NUMBER,
+                type: DataTypes.FLOAT,
                 allowNull: false,
             },
             userId: {
