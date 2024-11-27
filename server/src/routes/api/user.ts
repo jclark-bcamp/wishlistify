@@ -12,7 +12,7 @@ router.post('/', async (req: Request, res: Response) => {
   const { userName, email, userPassword } = req.body;
   try {
     const newUser = await User.create({ userName, email, userPassword });
-    const token = getNewToken(userName);
+    const token = getNewToken(email, newUser.id);
     res.status(201).json({ ...newUser, token });
   } catch (error: any) {
     res.status(400).json({ message: error.message });
@@ -37,7 +37,7 @@ router.post('/login', async (req: Request, res: Response) => {
     return res.status(401).json({ message: 'Authentication failed' });
   }
 
-  const token = getNewToken(email);
+  const token = getNewToken(email, user.id);
   return res.json({ token });
 });
 
