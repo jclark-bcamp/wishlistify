@@ -1,5 +1,6 @@
 import express from 'express';
 import type { Request, Response } from 'express';
+import bcrypt from 'bcrypt';
 import { User } from '../../models/index.js';
 import { Gift } from '../../models/gift.js';
 import { getNewToken } from '../../helpers/index.js';
@@ -16,6 +17,28 @@ router.post('/', async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(400).json({ message: error.message });
   }
+});
+
+// POST /users - Create a new user
+router.post('/login', async (req: Request, res: Response) => {
+  const { email, userPassword } = req.body;
+
+  const user = await User.findOne({
+    where: { email },
+  });
+
+  if (!user) {
+    return res.status(401).json({ message: 'Authentication failed' });
+  }
+
+  const passwordIsValid = await bcrypt.compare(userPassword, user.userPassword);
+
+  if (!passwordIsValid) {
+    return res.status(401).json({ message: 'Authentication failed' });
+  }
+
+  const token = getNewToken(email);
+  return res.json({ token });
 });
 
 // Get /users - Get all users
@@ -37,7 +60,7 @@ router.get('/:id/gifts', async (req: Request, res: Response) => {
       attributes: { exclude: ['userPassword', 'createdAt', 'updatedAt'] }
     });
 
-    if(userGifts) {
+    if (userGifts) {
       res.json(userGifts);
     } else {
       res.status(404).json({
