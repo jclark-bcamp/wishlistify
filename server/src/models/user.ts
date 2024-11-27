@@ -37,10 +37,12 @@ export function UserFactory(sequelize: Sequelize): typeof User {
         email: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
         },
         userName: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
         },
         userPassword: {
             type: DataTypes.STRING,

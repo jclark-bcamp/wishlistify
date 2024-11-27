@@ -5,6 +5,7 @@ import './index.css'
 import App from './App.tsx';
 import ErrorPage from './pages/ErrorPage.tsx';
 import About from './components/about/index.tsx';
+import Login from './pages/Login.tsx';
 // import Header from './components/header/index.tsx';
 // import MainPage from './pages/MainPage.tsx';
 
@@ -19,7 +20,10 @@ const router = createBrowserRouter([
         index: true,
         element: <About />
       }, 
-
+      {
+        path: '/login',
+        element: <Login />,
+      },
     ]
   }
 ]);

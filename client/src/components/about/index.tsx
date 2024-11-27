@@ -1,57 +1,24 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
-// import errorPage from '/pages/errorPage.tsx';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Auth from '../../middleware/auth';
 
 const About = () => {
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (Auth.loggedIn()) {
 
-  const [email, setEmail] = useState("");
-  // const [userName, setUserName] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  // const [error, setError] = useState(false);
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    const inputType = name;
-    const inputValue = value;
-    if (inputType === "email") {
-      setEmail(inputValue);
+      // Anytime you need the current user info, use Auth.getProfile()
+      console.log("USER INFO", Auth.getProfile())
+    } else {
+      navigate('/login');
     }
-  };
+  }, [navigate]);
 
-  const handleFormSubmit = (e:FormEvent) => {
-    e.preventDefault();
-    if (!email || !userPassword) {
-
-      return;
-    }
-    // Reset the form fields
-    setEmail("");
-    setUserPassword("");
-  }
-
+ 
   return (
     <section>
-      <h2>Login to start a list!</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            name="password"
-            value={userPassword}
-            onChange={handleInputChange}
-          />
-        </div>
-        {/* {TODO: Render error page} */}
-        <button type="submit">Submit</button>
-      </form>
+      <h2>Welcome {Auth.getProfile().email}</h2>
     </section>
   );
 }

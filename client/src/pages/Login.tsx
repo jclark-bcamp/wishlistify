@@ -6,8 +6,8 @@ import type { UserLogin } from '../interfaces/UserLogin';
 
 const Login = () => {
   const [loginData, setLoginData] = useState<UserLogin>({
-    username: '',
-    password: '',
+    email: '',
+    userPassword: '',
   });
 
   const handleChange = (
@@ -24,6 +24,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const data = await login(loginData);
+      console.log("LOGIN.TSX -> DATA FROM LOGIN:", data);
       Auth.login(data.token);
     } catch (err) {
       console.error('Failed to login', err);
@@ -32,16 +33,16 @@ const Login = () => {
 
   return (
     <div className='form-container'>
-      <form className='form login-form' onSubmit={handleSubmit}>
+      <form className='' onSubmit={handleSubmit}>
         <h1>Login</h1>
         <div className='form-group'>
-          <label>Username</label>
+          <label>Email</label>
           <input
-            placeholder='Username'
+            placeholder='Email'
             className='form-input'
             type='text'
-            name='username'
-            value={loginData.username || ''}
+            name='email'
+            value={loginData.email || ''}
             onChange={handleChange}
           />
         </div>
@@ -51,8 +52,8 @@ const Login = () => {
             placeholder='Password'
             className='form-input'
             type='password'
-            name='password'
-            value={loginData.password || ''}
+            name='userPassword'
+            value={loginData.userPassword || ''}
             onChange={handleChange}
           />
         </div>
