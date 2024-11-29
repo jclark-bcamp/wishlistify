@@ -16,7 +16,7 @@
 import { useState, useEffect, useLayoutEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import type { UserData } from "../interfaces/UserData";
-import ErrorPage from "./ErrorPage";
+// import ErrorPage from "./ErrorPage";
 import auth from '../middleware/auth';
 import UserList from "../components/users/users";
 import { retrieveUsers } from "../api/userapi.tsx";
@@ -24,7 +24,7 @@ import { retrieveUsers } from "../api/userapi.tsx";
 const Home = () => {
 
     const [users, setUsers] = useState<UserData[]>([]);
-    const [error, setError] = useState(false);
+    // const [error, setError] = useState(false);
     const [loginCheck, setLoginCheck] = useState(false);
     const navigate = useNavigate();
 
@@ -51,13 +51,13 @@ const Home = () => {
             setUsers(data)
         } catch (err) {
             console.error('Failed to retrieve tickets:', err);
-            setError(true);
+            // setError(true);
         }
     }
 
-    if (error) {
-        return <ErrorPage />;
-    }
+    // if (error) {
+    //     return <ErrorPage />;
+    // }
 
 
     return (

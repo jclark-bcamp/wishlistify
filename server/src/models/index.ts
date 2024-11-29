@@ -10,4 +10,4 @@ User.hasMany(Gift, {
     onDelete: 'CASCADE',
 });
 
-export { User, Gift };
+export { User, Gift, sequelize };
