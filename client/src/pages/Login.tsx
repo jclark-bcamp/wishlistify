@@ -24,10 +24,16 @@ const Login = () => {
     e.preventDefault();
     try {
       const data = await login(loginData);
-      console.log("LOGIN.TSX -> DATA FROM LOGIN:", data);
-      Auth.login(data.token);
+      if (data && data.token) {
+        console.log("LOGIN.TSX -> DATA FROM LOGIN:", data);
+        Auth.login(data.token);
+        console.log
+      } else {
+        throw new Error('Invalid login response');
+      }
     } catch (err) {
-      console.error('Failed to login', err);
+      // console.log being triggered
+      console.log('Failed to login', err);
     }
   };
 

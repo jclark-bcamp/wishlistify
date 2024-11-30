@@ -26,7 +26,7 @@ router.post('/login', async (req: Request, res: Response) => {
   const user = await User.findOne({
     where: { email },
   });
-
+console.log("USER", user);
   if (!user) {
     return res.status(401).json({ message: 'Authentication failed' });
   }

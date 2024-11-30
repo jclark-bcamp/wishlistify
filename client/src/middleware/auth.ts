@@ -7,6 +7,10 @@ import type { UserData } from '../interfaces/UserData';
 class AuthService {
   getProfile() {
     // Decode the JSON Web Token (JWT) using the jwtDecode function, specifying the expected payload type as UserData.
+    const token = this.getToken();
+    if (!token) {
+      throw new Error('No token found');
+    }
     // The getToken() method is called to retrieve the JWT, which is then passed to jwtDecode to extract and return its payload.
     return jwtDecode<UserData>(this.getToken());
   }
