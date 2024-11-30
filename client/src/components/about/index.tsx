@@ -21,17 +21,10 @@ const About = () => {
 }, [navigate]);
 
 
-//  NEED SOME KIND OF CONDITIONAL STATEMENT. IF LOGGED IN, DISPLAY WELCOME MESSAGE. IF NOT, REDIRECT TO LOGIN PAGE.
   return (
     <>
       <section>
-      {/* {
-      if (Auth.loggedIn()) {
-      <h2>Welcome {Auth.getProfile().email}</h2>
-    } else {
-      navigate('/login');
-    }}; */}
-        {/* <h2>Welcome {Auth.getProfile().email}</h2> */}
+        <h2>Welcome {Auth.getProfile().email}</h2>
       </section>
     </>
   );
