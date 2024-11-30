@@ -1,6 +1,7 @@
-import { User } from '../models/user';
+import { User } from '../models/index.js';
 
 export const seedUsers = async () => {
+    try {
     await User.bulkCreate([
         {
             userName: 'user1',
@@ -16,6 +17,9 @@ export const seedUsers = async () => {
             userName: 'user3',
             userPassword: 'password3',
             email: 'user3@email.com',
-        },
-    ]);
+        }
+    ], { individualHooks: true });
+} catch (error) {
+    console.error('Error in seedUsers:', error);
+}
 };

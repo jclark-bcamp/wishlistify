@@ -1,5 +1,5 @@
-import sequelize from '../config/connection';
-import { seedUsers } from './users';
+import sequelize from '../config/connection.js';
+import { seedUsers } from './users.js';
 // import { seedWishlists } from './items';
 
 const seedAll = async () => {
