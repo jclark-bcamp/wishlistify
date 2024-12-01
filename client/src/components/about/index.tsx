@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Auth from '../../middleware/auth';
+import GiftList from "../giftinput";
 
 const About = () => {
   const navigate = useNavigate();
@@ -22,11 +23,17 @@ const About = () => {
 
 
   return (
-    <>
-      <section>
-        <h2>Welcome {Auth.getProfile().email}</h2>
-      </section>
-    </>
+    
+    <div>
+    <section>
+      <h2>Welcome {Auth.getProfile().email}</h2>
+      <p>
+        This is a simple wishlist app that allows you to create a list of items you want to buy.</p>
+    </section>
+    <h2>Add a Gift!</h2>
+    <GiftList />
+  </div>
+    
   );
 }
 
