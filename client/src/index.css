@@ -1,213 +1,267 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
 :root {
-  font-family: 'Inter Tight', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-family: 'Playfair Display', serif, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
   font-weight: 400;
-  color-scheme: light dark;
-  color: black;
+  color-scheme: dark;
+  color: #E0E0E0;
+  background-color: #2A2A2A;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* webkit solution */
-::-webkit-input-placeholder { 
-  text-align:right; 
-}
-
-/* mozilla solution */
-input:-moz-placeholder { 
-  text-align:right; 
+body {
+  background: linear-gradient(145deg, #3A3A3A, #2A2A2A);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
 }
 
 a {
   font-weight: 500;
-  color: #67AAF9;
-  text-decoration: inherit;
+  color: #A9D0F5;
+  text-decoration: none;
 }
 
 a:hover {
-  color: #B95F89;
+  color: #F1A7B1;
 }
 
-body {
-  background: #2EC0F9;
-  background-size: cover;
-  background-repeat: no-repeat no-repeat;
-  background-position: center center;
-  margin: 0;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
+h1, h2 {
   font-size: 3.2em;
-  line-height: 1.1;
-  color: #9FCC2E;
+  line-height: 1.2;
+  color: #A9E3A7;
+  text-align: center;
 }
 
 h3 {
-  color: #4B6858;
-}
-
-h4 {
-  color: #424C55;
+  text-align: center;
+  color: #B5B5B5;
 }
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid #5A6A73;
   padding: 0.6em 1.2em;
   margin: 5% 7%;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #fff;
+  background-color: #333;
   cursor: pointer;
-  transition: border-color 0.25s;
-  color: #67AAF9;
+  transition: background-color 0.3s, border-color 0.3s;
+  color: #E0E0E0;
 }
 
 button:hover {
-  border-color: #058ed9;
+  background-color: #A9E3A7;
+  border-color: #A9D0F5;
 }
 
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 2px solid #A9D0F5;
 }
 
 main {
-  color: black;
+  color: #E0E0E0;
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 tr {
   border-radius: 10px;
-  background-color: #000;
-  color: white;
+  background-color: #2E2E2E;
+  color: #E0E0E0;
 }
 
 tbody tr:nth-child(odd) {
-  background-color: #333333;
+  background-color: #3A3A3A;
 }
 
-/* Navbar Content */
 .nav {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 1em 2em;
+  justify-content: flex-start; /* Adjust content to the left */
+  flex-wrap: wrap; /* Allow items to wrap to new lines */
+  background-color: #333;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.nav-title {
-  font-size: larger;
-  font-weight: 900;
+.nav-left {
+  flex: 1;
 }
 
-.nav-title a {
-  color: #B95F89;
+.nav-right {
+  display: flex;
+  list-style: none;
+  padding: 0;
 }
 
 .nav-item {
-  display: block;
-  margin-left: auto;
+  margin-left: 1em;
+}
+
+.nav-tabs {
   list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
 }
 
 .nav-link {
-  color: #fff;
+  color: #E0E0E0;
   text-decoration: none;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
-.main-list > div > a {
-  display: flex;
-  justify-content: center;
-  color: #B95F89;
+.nav-link:hover {
+  background-color: #5A6A73;
 }
 
-.work-list {
+.work-list, .volunteer-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
-.work-details {
-  text-align: center;
-  min-width: 10%;
-  width: 300px;
-  height: 300px;
-  margin: 5% 5%;
-  border: 3px solid #424C55;
-  box-shadow: 10px 5px 5px black;
-}
-
-.volunteer {
-  width: 100%;
-}
-
-.new-volunteer {
-  display: flex;
   justify-content: center;
+  gap: 2em;
 }
 
-.new-volunteer > a {
-  color: #B95F89;
-}
-
-.volunteer-list {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.v-card {
+.work-details, .v-card {
   text-align: center;
-  min-width: 10%;
   width: 250px;
   height: 300px;
-  margin: 5% 5%;
-  border: 3px solid #424C55;
-  box-shadow: 10px 5px 5px black;
+  margin: 1em;
+  padding: 1em;
+  border: 3px solid #5A6A73;
+  background-color: #333;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  color: #E0E0E0;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.work-details:hover, .v-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.7);
 }
 
 .form-container {
   display: flex;
-  width: 100%;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
 }
 
-.form {
-  width: 50%;
-  height: 80%;
-  background-color: #E3D7FF;
+.giftlist-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
-.form > input {
-  margin-top: 3%;
-  margin-bottom: 3%;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Specific styling for login button */
+.login-btn {
+  border-radius: 8px;
+  border: 1px solid #5A6A73;
+  padding: 0.6em 1.2em;
+  font-size: 1.2em;
+  font-weight: 500;
+  background-color: #A9E3A7;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  color: #2A2A2A;
+  width: 100%;
+}
+
+.login-btn:hover {
+  background-color: #2A2A2A; /* Matches the background */
+  color: #A9E3A7; /* Green font color */
+  font-weight: bold; /* Bold text on hover */
+  border-color: #A9D0F5;
+}
+
+.login-btn:focus,
+.login-btn:focus-visible {
+  outline: 2px solid #A9D0F5;
+}
+
+
+form input, form button {
+  width: 80%;
+  padding: 0.6em;
+  margin: 0.5em 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  font-family: 'Arial', sans-serif; /* Apply Arial font for readability */
+  font-size: 1.1em; /* Slightly smaller font size */
+}
+
+ul li {
+  margin: 0.5em 0;
+  font-size: 1.1em; /* Consistent with other list items */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150%;
+  padding: 2em;
+  background-color: #3A3A3A;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+  font-family: 'Arial', sans-serif; /* Apply Arial font for readability */
+}
+
+form button {
+  width: 30%;
+}
+
+#aboutp {
+  background-color: #3A3A3A; /* Dark background */
+  padding: 1.5em; /* Reduced padding */
+  margin: 1.5em; /* Reduced margin */
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Soft shadow */
+  color: #E0E0E0; /* Light text color */
   text-align: center;
+  font-size: 1.1em; /* Slightly smaller font size */
+  line-height: 1.6;
+  font-family: 'Arial', sans-serif; /* Changed to Arial for easier readability */
 }
 
-.form > label {
-  color: #4B6858;
+#aboutp h2 {
+  font-size: 2.2em; /* Smaller heading */
+  color: #A9E3A7; /* Light green color for heading */
+  margin-bottom: 1em;
+  font-family: 'Playfair Display', serif; /* Keep serif font for headings */
 }
 
-.form > textarea {
-  width: 350px;
-  height: 100px;
-  text-align: center;
-}
-
-.form > select {
-  text-align: center;
+#aboutp p {
+  font-size: 1.1em; /* Slightly smaller paragraph text */
+  color: #B5B5B5; /* Slightly lighter gray for paragraph text */
+  font-family: 'Arial', sans-serif; /* Changed to Arial for easier readability */
 }
