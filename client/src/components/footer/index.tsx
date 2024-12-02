@@ -1,6 +1,6 @@
 function Footer () {
     return (
-           <h1>Group 4</h1>
-    );
+           <h3>!~ Coding Bootcamp Project 2 ~ Group 4 ~! </h3>
+     );
 }
 export default Footer;

@@ -1,6 +1,5 @@
 import { useState, FormEvent } from 'react';
 
-
 // const GiftList = () => {
 //   // States
 //   const [gift, setGift] = useState<string>(''); // Individual gift input
@@ -42,10 +41,10 @@ function GiftList() {
   };
 
   return (
-    <section>
-      <form id="giftForm" onSubmit={handleFormSubmit}>
-        <div>
-          <label htmlFor="gift">Gift:</label>
+    <section className="giftlist-container">
+      <form id="giftForm" onSubmit={handleFormSubmit} className="form-container">
+        <div className="form-group">
+          <label htmlFor="gift"> Gift: </label>
           <input
             type="text"
             id="gift"
@@ -55,7 +54,7 @@ function GiftList() {
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="price">Price:</label>
           <input
             type="number"
@@ -77,7 +76,7 @@ function GiftList() {
           </li>
         ))}
       </ul>
-    </section> 
+    </section>
   );
 }
 

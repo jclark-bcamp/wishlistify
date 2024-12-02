@@ -27,8 +27,11 @@ const About = () => {
     <div>
     <section>
       <h2>Welcome {Auth.getProfile().email}</h2>
+      <div id="aboutp">
       <p>
-        This is a simple wishlist app that allows you to create a list of items you want to buy.</p>
+        This is a simple wishlist app that allows you to create a list of items you want to buy.
+      </p>
+      </div>
     </section>
     <h2>Add a Gift!</h2>
     <GiftList />
