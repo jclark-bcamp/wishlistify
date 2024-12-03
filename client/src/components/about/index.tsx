@@ -7,18 +7,18 @@ const About = () => {
   const navigate = useNavigate();
   
   useEffect(() => {
-  const checkAuthStatus = () => {
-    if (Auth.loggedIn()) {
-      console.log("LOGGED IN");
-      // Anytime you need the current user info, use Auth.getProfile()
-      console.log("USER INFO", Auth.getProfile());
-    } else {
-      console.log("NOT LOGGED IN");
-      navigate('/login');
-    }
-  };
+    const checkAuthStatus = () => {
+      if (Auth.loggedIn()) {
+        console.log("LOGGED IN");
+        // Anytime you need the current user info, use Auth.getProfile()
+        console.log("USER INFO", Auth.getProfile());
+      } else {
+        console.log("NOT LOGGED IN");
+        navigate('/login');
+      }
+    };
 
-  checkAuthStatus();
+    checkAuthStatus();
 }, [navigate]);
 
 
@@ -26,7 +26,7 @@ const About = () => {
     
     <div>
     <section>
-      <h2>Welcome {Auth.getProfile().email}</h2>
+      <h2>Welcome {Auth?.getProfile()?.email}</h2>
       <div id="aboutp">
       <p>
         This is a simple wishlist app that allows you to create a list of items you want to buy.

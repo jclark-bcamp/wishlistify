@@ -10,6 +10,7 @@ class AuthService {
     const token = this.getToken();
     if (!token) {
       console.log('No token found');
+      return null;
     }
     // The getToken() method is called to retrieve the JWT, which is then passed to jwtDecode to extract and return its payload.
     return jwtDecode<UserData>(this.getToken());
